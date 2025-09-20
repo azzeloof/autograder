@@ -1,5 +1,7 @@
 # AutoGrader
 
+[![Client CI](https://github.com/azzeloof/autograder/actions/workflows/client-ci.yml/badge.svg)](https://github.com/azzeloof/autograder/actions/workflows/client-ci.yml)
+
 This project is a Python-based autograding system consisting of a client and a server. The system allows students to check their code's outputs against instructor-provided functions without having access to the underlying test code.
 
 ## Overview
