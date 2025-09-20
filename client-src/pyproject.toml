@@ -1,0 +1,23 @@
+[project]
+name = "autograder-client-azz"
+version = "0.0.1"
+authors = [
+  { name="Adam Zeloof", email="adam@zeloof.xyz" },
+]
+description = "A client for Adam's autograder server"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "GPL-3.0"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/azzeloof/autograder"
+Issues = "https://github.com/azzeloof/autograder/issues"
+
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
