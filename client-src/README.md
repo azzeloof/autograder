@@ -4,9 +4,9 @@ This package provides a Python client for an autograder server. It allows studen
 
 ## How it works
 
-The client uses a dynamic interface to send student's code to the autograder server. The server then evaluates the code and returns the result.
+The client uses a dynamic interface to send the output from a student's to the autograder server. The server then evaluates the results and returns the result.
 
-The `Autograder` class is the main entry point for the client. It takes the URL of the autograder server as an argument. When a student accesses an attribute of an `Autograder` instance, it returns an `Assignment` instance. When a student calls a method on an `Assignment` instance, the client sends a POST request to the autograder server with the assignment name, function name, and arguments. The server then evaluates the function and returns the result.
+The `Autograder` class is the main entry point for the client. It takes the URL of the autograder server as an argument. When a student accesses an attribute of an `Autograder` instance, it returns an `Assignment` instance. When a student calls a method on an `Assignment` instance, the client sends a POST request to the autograder server with the assignment name, function name, and arguments. The server then evaluates the function (already provided on the server by an instructor) and returns the result.
 
 ## Installation
 
