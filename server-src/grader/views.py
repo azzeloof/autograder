@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Assignment, TestFunction
-from ratelimit.decorators import ratelimit
+from django_ratelimit.decorators import ratelimit
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
