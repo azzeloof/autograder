@@ -2,11 +2,11 @@ name: Server CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'server-src/**'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'server-src/**'
 
