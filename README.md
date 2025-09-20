@@ -15,7 +15,7 @@ The autograder system is composed of two main parts:
 ## How It Works
 
 1.  **Instructors** define assignments and test functions using the Django admin interface on the server. They can specify allowed libraries and the code for each test function.
-2.  **Students** use the Python client to connect to the server and call the test functions with their code as arguments.
+2.  **Students** use the Python client to connect to the server and call the test functions.
 3.  The **server** receives the student's answer, evaluats it against a given function in a restricted environment, and returns the result to the client.
 4.  The **client** handles the interface between the student and the server.
 
