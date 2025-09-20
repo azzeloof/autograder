@@ -6,7 +6,6 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-    network_mode: host
     ports:
       - "5432:5432"
     volumes:
@@ -17,9 +16,8 @@ services:
   django-web:
     build: .
     container_name: autograder
-    network_mode: host
     ports:
-      - "8000:8000"
+      - "80:8000"
     depends_on:
       - db
     environment:
@@ -33,8 +31,12 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
+      DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
+      DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
+      DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
     env_file:
       - .env
+    command: sh -c "python manage.py migrate && python manage.py createsuperuser --noinput || true && gunicorn --bind 0.0.0.0:8000 --workers 3 AutoGrader.wsgi:application"
 
 volumes:
   autograder_postgres_data:

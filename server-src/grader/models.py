@@ -6,7 +6,7 @@ from RestrictedPython.Eval import default_guarded_getiter
 from RestrictedPython.Guards import guarded_iter_unpack_sequence
 
 class Assignment(models.Model):
-    name = models.CharField(max_length=100)     # assignment name (i.e "Week 1")
+    name = models.CharField(max_length=100, unique=True)     # assignment name (i.e "Week 1")
 
     def __str__(self):
         return self.name
@@ -18,6 +18,9 @@ class TestFunction(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE) # the parent assignment
     grade = models.BooleanField(default=False, null=True) # whether requests should be graded/recorded, or simply responded to
     allowed_libraries = models.TextField(blank=True) # csv of library names, e.g "math, json, gravity"
+
+    class Meta:
+        unique_together = ('name', 'assignment')
 
     def __str__(self):
         return self.name
@@ -52,8 +55,10 @@ class TestFunction(models.Model):
             func_to_call = safe_locals.get(self.name)
             if not func_to_call:
                 return JsonResponse({'No such function': self.name}, status=400)
+            if not callable(func_to_call):
+                return JsonResponse({'Not a callable function': self.name}, status=400)
             result = func_to_call(*args, **kwargs)
             print(result)
             return JsonResponse({'Result': result}, status=200)
         except Exception as e:
-            return JsonResponse({'Error': e}, status=400)
+            return JsonResponse({'Error': str(e)}, status=400)
