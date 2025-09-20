@@ -2,11 +2,11 @@ name: Client CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'client-src/**'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'client-src/**'
 
