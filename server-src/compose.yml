@@ -34,6 +34,8 @@ services:
       DJANGO_SUPERUSER_USERNAME: ${DJANGO_SUPERUSER_USERNAME}
       DJANGO_SUPERUSER_PASSWORD: ${DJANGO_SUPERUSER_PASSWORD}
       DJANGO_SUPERUSER_EMAIL: ${DJANGO_SUPERUSER_EMAIL}
+      AUTOGRADER_RATE_LIMIT: ${AUTOGRADER_RATE_LIMIT}
+      AUTOGRADER_TIMEOUT_SECONDS: ${AUTOGRADER_TIMEOUT_SECONDS}
     env_file:
       - .env
     command: sh -c "python manage.py migrate && python manage.py createsuperuser --noinput || true && gunicorn --bind 0.0.0.0:8000 --workers 3 AutoGrader.wsgi:application"
