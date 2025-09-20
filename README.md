@@ -1,4 +1,4 @@
-# AutoGrader
+# autograder
 
 [![Client CI](https://github.com/azzeloof/autograder/actions/workflows/client-ci.yml/badge.svg)](https://github.com/azzeloof/autograder/actions/workflows/client-ci.yml)
 [![Server CI](https://github.com/azzeloof/autograder/actions/workflows/server-ci.yml/badge.svg)](https://github.com/azzeloof/autograder/actions/workflows/server-ci.yml)
